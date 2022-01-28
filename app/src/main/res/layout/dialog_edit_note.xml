@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/edit_note_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:hint="@string/new_title"
+        tools:text="Title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edit_note_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:lines="4"
+            android:textSize="20sp"
+            android:hint="@string/new_description"
+            tools:text="Description" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/interest_place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="#33002244"
+                android:contextClickable="true"
+                android:entries="@array/interest_name">
+
+            </Spinner>
+
+            <TextView
+                android:id="@+id/current_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="#7C4FA2EA"
+                android:textSize="15sp"
+                tools:text="DATA" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+<!--
+
+    <Button
+        android:id="@+id/edit_note_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/update_note" />
+-->
+
+</LinearLayout>

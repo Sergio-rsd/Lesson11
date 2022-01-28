@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="interest_name">
+        <!--<item>""</item>-->
+        <item>Важно</item>
+        <item>Так себе</item>
+        <item>Не о чем</item>
+    </string-array>
+</resources>
