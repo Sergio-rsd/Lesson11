@@ -7,9 +7,13 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.ui.AppBarConfiguration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.navigation.ui.NavigationUI;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import ru.gb.lesson11.R;
 import ru.gb.lesson11.data.InMemoryRepoImpl;
@@ -19,27 +23,53 @@ import ru.gb.lesson11.data.Repo;
 import ru.gb.lesson11.data.YesNoDialogController;
 import ru.gb.lesson11.dialog.NoteDialog;
 import ru.gb.lesson11.dialog.YesNoDialog;
+import ru.gb.lesson11.fragment.ListFragment;
 import ru.gb.lesson11.recycler.NoteHolder;
 import ru.gb.lesson11.recycler.NotesAdapter;
 
-public class MainActivity extends AppCompatActivity
-        implements PopupMenuClick,
-        NoteDialog.NoteDialogController,
-        YesNoDialogController {
+//import ru.gb.lesson11.databinding.ActivityMainBinding;
 
+public class MainActivity extends AppCompatActivity
+//        implements PopupMenuClick, NoteDialog.NoteDialogController, YesNoDialogController {
+        implements YesNoDialogController,
+        PopupMenuClick,
+        ListFragment.RecyclerController
+          {
+//ListFragment.RecyclerController{
+
+// TODO убрать 1
+    /*
     private Repo repository = InMemoryRepoImpl.getInstance();
     Note note;
     RecyclerView listAdapter;
     private NotesAdapter adapter = new NotesAdapter();
+   */
 
+//    private AppBarConfiguration mAppBarConfiguration;
+//    private ActivityMainBinding binding;
+
+    //убрать 1
+    ListFragment listNotes = new ListFragment();
+    private Note note;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_recycle_note);
+//        setContentView(R.layout.fragment_recycle_note);
+        setContentView(R.layout.activity_test);
 
+//        ListFragment listNotes = new ListFragment();
+        if (savedInstanceState == null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, listNotes)
+                    .commit();
+        }
+
+/*
+
+// TODO убрать 2
         adapter.setOnPopupMenuClick(this);
-
         listAdapter = findViewById(R.id.list_notes);
         listAdapter.setAdapter(adapter);
         listAdapter.setLayoutManager(new LinearLayoutManager(this));
@@ -69,8 +99,13 @@ public class MainActivity extends AppCompatActivity
             }
         });
         helper.attachToRecyclerView(listAdapter);
+*/
+
+// убрать 2
+
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -96,8 +131,11 @@ public class MainActivity extends AppCompatActivity
     public void click(int command, Note note, int position) {
         switch (command) {
             case R.id.context_delete:
-                repository.delete(note.getId());
-                adapter.delete(repository.getAll(), position);
+                listNotes.delete(note,position);
+
+//                repository.delete(note.getId());
+//                adapter.delete(repository.getAll(), position);
+
                 return;
             case R.id.context_modify:
                 NoteDialog.getInstance(note).show(
@@ -108,25 +146,32 @@ public class MainActivity extends AppCompatActivity
                 return;
         }
     }
+/*
 
     @Override
     public void update(Note note) {
-        repository.update(note);
-        adapter.setNotes(repository.getAll());
+        listNotes.update(note);
+
+//        repository.update(note);
+//        adapter.setNotes(repository.getAll());
+//
     }
 
     @Override
     public void create(String title, String description, String interest, String dataPerformance) {
         Note note = new Note(title, description, interest, dataPerformance);
-        repository.create(note);
-        adapter.setNotes(repository.getAll());
+        listNotes.create(note);
+
+//        repository.create(note);
+//        adapter.setNotes(repository.getAll());
 
     }
+*/
+
 
     @Override
     public void onBackPressed() {
         showYesNoDialogFragment();
-
     }
 
     private void showYesNoDialogFragment() {
@@ -137,4 +182,12 @@ public class MainActivity extends AppCompatActivity
     public void createAnswer() {
         finish();
     }
+
+    @Override
+    public void connect() {
+        listNotes.passData(note);
+
+    }
+
+
 }
