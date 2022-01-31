@@ -33,14 +33,15 @@ public class MainActivity extends AppCompatActivity
 //        implements PopupMenuClick, NoteDialog.NoteDialogController, YesNoDialogController {
         implements YesNoDialogController,
         PopupMenuClick,
-        ListFragment.RecyclerController
-          {
+        ListFragment.RecyclerController,
+        NoteDialog.NoteDialogController {
 //ListFragment.RecyclerController{
 
 // TODO убрать 1
-    /*
+
     private Repo repository = InMemoryRepoImpl.getInstance();
-    Note note;
+//    Note note;
+/*
     RecyclerView listAdapter;
     private NotesAdapter adapter = new NotesAdapter();
    */
@@ -131,7 +132,7 @@ public class MainActivity extends AppCompatActivity
     public void click(int command, Note note, int position) {
         switch (command) {
             case R.id.context_delete:
-                listNotes.delete(note,position);
+                listNotes.delete(note, position);
 
 //                repository.delete(note.getId());
 //                adapter.delete(repository.getAll(), position);
@@ -140,13 +141,13 @@ public class MainActivity extends AppCompatActivity
             case R.id.context_modify:
                 NoteDialog.getInstance(note).show(
                         getSupportFragmentManager(),
+//                        getChildFragmentManager(),
                         NoteDialog.NOTE
                 );
 
                 return;
         }
     }
-/*
 
     @Override
     public void update(Note note) {
@@ -166,7 +167,6 @@ public class MainActivity extends AppCompatActivity
 //        adapter.setNotes(repository.getAll());
 
     }
-*/
 
 
     @Override

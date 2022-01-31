@@ -24,9 +24,11 @@ import ru.gb.lesson11.recycler.NotesAdapter;
 import ru.gb.lesson11.ui.MainActivity;
 
 public class ListFragment extends Fragment
-        implements
-////        PopupMenuClick,
-        NoteDialog.NoteDialogController {
+//        implements
+//        PopupMenuClick
+//        ,
+//        NoteDialog.NoteDialogController
+{
 
     private Repo repository = InMemoryRepoImpl.getInstance();
     private NotesAdapter adapter = new NotesAdapter();
@@ -96,7 +98,6 @@ public class ListFragment extends Fragment
         helper.attachToRecyclerView(listAdapter);
     }
 /*
-
     @Override
     public void click(int command, Note note, int position) {
         switch (command) {
@@ -116,20 +117,24 @@ public class ListFragment extends Fragment
                 return;
         }
     }
-*/
 
+    */
+ /*
     @Override
     public void update(Note note) {
         repository.update(note);
         adapter.setNotes(repository.getAll());
     }
 
-    @Override
-    public void create(String title, String description, String interest, String dataPerformance) {
-        Note note = new Note(title, description, interest, dataPerformance);
-        repository.create(note);
-        adapter.setNotes(repository.getAll());
-    }
+*/
+    /*
+        @Override
+        public void create(String title, String description, String interest, String dataPerformance) {
+            Note note = new Note(title, description, interest, dataPerformance);
+            repository.create(note);
+            adapter.setNotes(repository.getAll());
+        }
+*/
 
     /*        @Override
         public void create(Note note) {
@@ -138,7 +143,7 @@ public class ListFragment extends Fragment
             adapter.setNotes(repository.getAll());
         }
 
-        */
+*/
     public Note passData(Note note) {
         this.note = note;
         return note;
@@ -147,5 +152,15 @@ public class ListFragment extends Fragment
     public void delete(Note note, int position) {
         repository.delete(note.getId());
         adapter.delete(repository.getAll(), position);
+    }
+
+    public void update(Note note){
+        repository.update(note);
+        adapter.setNotes(repository.getAll());
+    }
+
+    public void create(Note note) {
+        repository.create(note);
+        adapter.setNotes(repository.getAll());
     }
 }
