@@ -44,8 +44,6 @@ public class NoteDialog extends DialogFragment {
 
     private NoteDialogController controller;
 
-//    controller = (NoteDialogController)requireContext();
-
     @Override
     public void onAttach(@NonNull Context context) {
 //        controller = (NoteDialogController) context;

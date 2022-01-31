@@ -40,14 +40,7 @@ public class MainActivity extends AppCompatActivity
 // TODO убрать 1
 
     private Repo repository = InMemoryRepoImpl.getInstance();
-//    Note note;
-/*
-    RecyclerView listAdapter;
-    private NotesAdapter adapter = new NotesAdapter();
-   */
 
-//    private AppBarConfiguration mAppBarConfiguration;
-//    private ActivityMainBinding binding;
 
     //убрать 1
     ListFragment listNotes = new ListFragment();
