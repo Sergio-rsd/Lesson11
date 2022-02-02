@@ -12,4 +12,7 @@
     <string name="list_of_notes">LIST OF NOTES</string>
     <string name="about">About</string>
     <string name="exit">Exit</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="about_our_team">About our team</string>
 </resources>
