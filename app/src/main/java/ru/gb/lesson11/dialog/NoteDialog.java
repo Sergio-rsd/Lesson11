@@ -46,7 +46,6 @@ public class NoteDialog extends DialogFragment {
 
     @Override
     public void onAttach(@NonNull Context context) {
-//        controller = (NoteDialogController) context;
         if (context instanceof NoteDialogController) {
             this.controller = (NoteDialogController) context;
         } else {
@@ -69,7 +68,6 @@ public class NoteDialog extends DialogFragment {
         Bundle args = getArguments();
         note = (Note) args.getSerializable(NOTE);
 
-//        View dialog = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_edit_note, null);
         View dialog = getLayoutInflater().inflate(R.layout.dialog_edit_note, null);
 
         String title = "";
@@ -148,7 +146,6 @@ public class NoteDialog extends DialogFragment {
                         interest = spinner.getSelectedItem().toString();
                         setInitialDate();
                         controller.create(
-//                        ((NoteDialogController)requireContext()).create(
                                 dialogTitle.getText().toString(),
                                 dialogDescription.getText().toString(),
                                 interest,
@@ -159,7 +156,6 @@ public class NoteDialog extends DialogFragment {
                         note.setDescription(dialogDescription.getText().toString());
                         note.setInterest(interest);
                         note.setDataPerformance(currentDateTime.getText().toString());
-//                        ((NoteDialogController)requireContext()).update(note);
                         controller.update(note);
                     }
                     dialogInterface.dismiss();

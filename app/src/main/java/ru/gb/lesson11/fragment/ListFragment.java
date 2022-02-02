@@ -24,10 +24,7 @@ import ru.gb.lesson11.recycler.NotesAdapter;
 import ru.gb.lesson11.ui.MainActivity;
 
 public class ListFragment extends Fragment
-//        implements
-//        PopupMenuClick
-//        ,
-//        NoteDialog.NoteDialogController
+
 {
 
     private Repo repository = InMemoryRepoImpl.getInstance();
@@ -97,53 +94,7 @@ public class ListFragment extends Fragment
         });
         helper.attachToRecyclerView(listAdapter);
     }
-/*
-    @Override
-    public void click(int command, Note note, int position) {
-        switch (command) {
-            case R.id.context_delete:
-                repository.delete(note.getId());
-                adapter.delete(repository.getAll(), position);
-                return;
-            case R.id.context_modify:
-                NoteDialog.getInstance(note).show(
-//                        ((NoteDialog.NoteDialogController)requireContext()).getSupportFragmentManager(),
-//                        getParentFragmentManager(),
-//                        getSupportFragmentManager(),
-                        getChildFragmentManager(),
-                        NoteDialog.NOTE
-                );
 
-                return;
-        }
-    }
-
-    */
- /*
-    @Override
-    public void update(Note note) {
-        repository.update(note);
-        adapter.setNotes(repository.getAll());
-    }
-
-*/
-    /*
-        @Override
-        public void create(String title, String description, String interest, String dataPerformance) {
-            Note note = new Note(title, description, interest, dataPerformance);
-            repository.create(note);
-            adapter.setNotes(repository.getAll());
-        }
-*/
-
-    /*        @Override
-        public void create(Note note) {
-    //        Note note = new Note(title, description, interest, dataPerformance);
-            repository.create(note);
-            adapter.setNotes(repository.getAll());
-        }
-
-*/
     public Note passData(Note note) {
         this.note = note;
         return note;

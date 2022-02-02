@@ -9,19 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.navigation.ui.NavigationUI;
+
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.widget.Toolbar;
 
-import java.io.Serializable;
 
 import ru.gb.lesson11.R;
 import ru.gb.lesson11.data.InMemoryRepoImpl;
@@ -33,24 +27,17 @@ import ru.gb.lesson11.dialog.NoteDialog;
 import ru.gb.lesson11.dialog.YesNoDialog;
 import ru.gb.lesson11.fragment.AboutFragment;
 import ru.gb.lesson11.fragment.ListFragment;
-import ru.gb.lesson11.recycler.NoteHolder;
-import ru.gb.lesson11.recycler.NotesAdapter;
 
-//import ru.gb.lesson11.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity
-//        implements PopupMenuClick, NoteDialog.NoteDialogController, YesNoDialogController {
+
         implements YesNoDialogController,
         PopupMenuClick,
         ListFragment.RecyclerController,
         NoteDialog.NoteDialogController {
-//ListFragment.RecyclerController{
-
-// TODO убрать 1
 
     private Repo repository = InMemoryRepoImpl.getInstance();
     public static final String LIST_FRAGMENT = "LIST_FRAGMENT";
-    public static final String NOTE_STATE = "NOTE_STATE";
     public static final String ABOUT = "ABOUT";
 
     ListFragment listNotes;
@@ -195,6 +182,5 @@ public class MainActivity extends AppCompatActivity
         listNotes.passData(note);
 
     }
-
 
 }
