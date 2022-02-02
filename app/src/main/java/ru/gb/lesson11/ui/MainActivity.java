@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import java.io.Serializable;
+
 import ru.gb.lesson11.R;
 import ru.gb.lesson11.data.InMemoryRepoImpl;
 import ru.gb.lesson11.data.Note;
@@ -40,10 +42,15 @@ public class MainActivity extends AppCompatActivity
 // TODO убрать 1
 
     private Repo repository = InMemoryRepoImpl.getInstance();
-
+    public static final String LIST_FRAGMENT = "LIST_FRAGMENT";
+    public static final String NOTE_STATE = "NOTE_STATE";
 
     //убрать 1
-    ListFragment listNotes = new ListFragment();
+//    ListFragment listNotes = new ListFragment();
+
+    ListFragment listNotes;
+
+    //            = new ListFragment();
     private Note note;
 
     @Override
@@ -52,12 +59,40 @@ public class MainActivity extends AppCompatActivity
 //        setContentView(R.layout.fragment_recycle_note);
         setContentView(R.layout.activity_test);
 
+//        listNotes = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        ListFragment listNoteFragment = (ListFragment) getSupportFragmentManager().findFragmentByTag(LIST_FRAGMENT);
+//        listNotes = (ListFragment) getSupportFragmentManager().findFragmentByTag(LIST_FRAGMENT);
+
+
 //        ListFragment listNotes = new ListFragment();
-        if (savedInstanceState == null) {
+
+/*        if (savedInstanceState == null) {
+        listNotes = new ListFragment();
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container, listNotes)
+                    .replace(R.id.fragment_container, listNotes, LIST_FRAGMENT)
                     .commit();
+        }
+     */
+//        ListFragment listNotes;
+
+/*
+        if(listNoteFragment){
+
+        }
+*/
+//        Bundle currentState = new Bundle();
+
+        if (listNoteFragment == null) {
+//            ListFragment listNotes = new ListFragment();
+            listNotes = new ListFragment();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.fragment_container, listNotes, LIST_FRAGMENT)
+                    .commit();
+
+        } else {
+            listNotes = (ListFragment) getSupportFragmentManager().findFragmentByTag(LIST_FRAGMENT);
         }
 
 /*
@@ -97,7 +132,6 @@ public class MainActivity extends AppCompatActivity
 
 // убрать 2
 
-
     }
 
 
@@ -126,6 +160,7 @@ public class MainActivity extends AppCompatActivity
         switch (command) {
             case R.id.context_delete:
                 listNotes.delete(note, position);
+//                delete(note, position);
 
 //                repository.delete(note.getId());
 //                adapter.delete(repository.getAll(), position);
@@ -145,6 +180,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void update(Note note) {
         listNotes.update(note);
+//        update(note);
 
 //        repository.update(note);
 //        adapter.setNotes(repository.getAll());
@@ -155,6 +191,8 @@ public class MainActivity extends AppCompatActivity
     public void create(String title, String description, String interest, String dataPerformance) {
         Note note = new Note(title, description, interest, dataPerformance);
         listNotes.create(note);
+//        create(note);
+//        create(title, description, interest, dataPerformance);
 
 //        repository.create(note);
 //        adapter.setNotes(repository.getAll());
@@ -182,5 +220,12 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-
+//    @Override
+//    protected void onSaveInstanceState(@NonNull Bundle outState) {
+//        Bundle currentState = new Bundle();
+//        currentState.putSerializable(NOTE_STATE, (Serializable) listNotes);
+//
+//        super.onSaveInstanceState(outState);
+//    }
+//
 }
