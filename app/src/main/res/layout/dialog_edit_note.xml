@@ -11,8 +11,8 @@
         android:id="@+id/edit_note_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
         android:hint="@string/new_title"
+        android:textSize="24sp"
         tools:text="Title" />
 
     <LinearLayout
@@ -25,9 +25,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
+            android:hint="@string/new_description"
             android:lines="4"
             android:textSize="20sp"
-            android:hint="@string/new_description"
             tools:text="Description" />
 
         <LinearLayout
@@ -59,13 +59,5 @@
         </LinearLayout>
 
     </LinearLayout>
-<!--
-
-    <Button
-        android:id="@+id/edit_note_update"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/update_note" />
--->
 
 </LinearLayout>

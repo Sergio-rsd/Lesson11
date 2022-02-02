@@ -5,5 +5,5 @@
         android:id="@+id/main_create"
         android:title="@string/create"
         android:icon="@drawable/ic_baseline_add_24"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 </menu>
